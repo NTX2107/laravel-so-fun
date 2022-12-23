@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,6 +22,7 @@ return new class extends Migration {
             $table->string('detail');
             $table->string('description');
             $table->unsignedInteger('quantity');
+            $table->foreignIdFor(Category::class)->unsigned();
             $table->softDeletes();
             $table->timestamps();
         });
