@@ -24,7 +24,12 @@ class ProductController extends Controller
     }
 
     public function create(ProductRequest $request) {
-        return $this->productService->create($request);
+        $this->productService->create($request);
+        return redirect(route('home'));
+    }
+
+    public function loadFrom() {
+        return view('products.create');
     }
 
     public function delete($id) {
