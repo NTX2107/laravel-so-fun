@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,13 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('products')->group(function () {
     Route::get('', [ProductController::class, 'index'])->name('show.all.products');
-    Route::get('{id}', [ProductController::class, 'detail'])->name('show.product');
+    Route::get('detail/{id}', [ProductController::class, 'detail'])->name('show.product');
+    Route::get('create', [ProductController::class, 'loadFrom'])->name('show.create.product');
+    Route::post('create', [ProductController::class, 'create'])->name('create.product');
 });
 
 Route::prefix('categories')->group(function () {

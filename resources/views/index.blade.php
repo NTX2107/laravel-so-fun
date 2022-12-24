@@ -14,14 +14,12 @@
     <title>Plot Listing Page</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-
+    <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="../css/fontawesome.css">
-    <link rel="stylesheet" href="../css/templatemo-plot-listing.css">
-    <link rel="stylesheet" href="../css/animated.css">
-    <link rel="stylesheet" href="../css/owl.css">
+    <link rel="stylesheet" href="{{asset('assets/css/fontawesome.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/templatemo-plot-listing.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/animated.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/owl.css')}}">
 <!--
 
 TemplateMo 564 Plot Listing
@@ -58,12 +56,12 @@ https://templatemo.com/tm-564-plot-listing
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="category.html">Category</a></li>
-              <li><a href="listing.html" class="active">Listing</a></li>
-              <li><a href="contact.html">Contact Us</a></li> 
-              <li><div class="main-white-button"><a href="#"><i class="fa fa-plus"></i> Add Your Listing</a></div></li> 
-            </ul>        
+              <li><a href="{{route('home')}}" class="{{ Route::currentRouteNamed('home') ? 'active' : '' }}">Home</a></li>
+              <li><a href="#">Category</a></li>
+              <li><a href="#"  class="{{ Route::currentRouteNamed('show.all.products') ? 'active' : '' }}">Listing</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><div class="main-white-button"><a href="{{route('show.create.product')}}"><i class="fa fa-plus"></i> Add Your Product</a></div></li>
+            </ul>
             <a class='menu-trigger'>
                 <span>Menu</span>
             </a>
@@ -104,25 +102,25 @@ https://templatemo.com/tm-564-plot-listing
                       </div>
                     </div>
                     <div>
-                      <div class="thumb">                 
+                      <div class="thumb">
                         <span class="icon"><img src="assets/images/search-icon-02.png" alt=""></span>
                         Food &amp; Life
                       </div>
                     </div>
                     <div>
-                      <div class="thumb">                 
+                      <div class="thumb">
                         <span class="icon"><img src="assets/images/search-icon-03.png" alt=""></span>
                         Cars
                       </div>
                     </div>
                     <div class="last-thumb">
-                      <div class="thumb">                 
+                      <div class="thumb">
                         <span class="icon"><img src="assets/images/search-icon-04.png" alt=""></span>
                         Traveling
                       </div>
                     </div>
                   </div>
-                </div> 
+                </div>
                 <div class="col-lg-9">
                   <ul class="nacc">
                   <!-- first category listing of items -->
@@ -252,7 +250,7 @@ https://templatemo.com/tm-564-plot-listing
                                 </div>
                               </div>
                             </div>
-                            
+
                             <!-- third page of first category -->
                             <div class="item">
                               <div class="row">
@@ -319,7 +317,7 @@ https://templatemo.com/tm-564-plot-listing
                         </div>
                       </div>
                     </li>
-                    
+
                     <!-- second category listing of items -->
                     <li>
                       <div>
@@ -386,7 +384,7 @@ https://templatemo.com/tm-564-plot-listing
                                 </div>
                               </div>
                             </div>
-                            
+
                             <!-- second category second page -->
                             <div class="item">
                               <div class="row">
@@ -455,7 +453,7 @@ https://templatemo.com/tm-564-plot-listing
                         </div>
                       </div>
                     </li>
-                    
+
                     <!-- third category first page -->
                     <li>
                       <div>
@@ -522,7 +520,7 @@ https://templatemo.com/tm-564-plot-listing
                                 </div>
                               </div>
                             </div>
-                            
+
                             <!-- third category second page -->
                             <div class="item">
                               <div class="row">
@@ -585,16 +583,16 @@ https://templatemo.com/tm-564-plot-listing
                                 </div>
                               </div>
                             </div>
-                            
+
                             <!-- third category third page -->
                             <!-- NONE -->
-                            
-                            
+
+
                           </div>
                         </div>
                       </div>
                     </li>
-                    
+
                     <!-- 4th category 1st page -->
                     <li>
                       <div>
@@ -661,7 +659,7 @@ https://templatemo.com/tm-564-plot-listing
                                 </div>
                               </div>
                             </div>
-                            
+
                             <!-- 4th category 2nd page -->
                             <div class="item">
                               <div class="row">
@@ -724,7 +722,7 @@ https://templatemo.com/tm-564-plot-listing
                                 </div>
                               </div>
                             </div>
-                            
+
                             <!-- 4th category 3rd page -->
                             <div class="item">
                               <div class="row">
@@ -747,19 +745,19 @@ https://templatemo.com/tm-564-plot-listing
                                     </div>
                                   </div>
                                 </div>
-                                
-                                
+
+
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </li>
-                  
-                    
+
+
                   </ul>
-                  
-                </div>          
+
+                </div>
               </div>
             </div>
           </div>
@@ -827,14 +825,13 @@ https://templatemo.com/tm-564-plot-listing
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/bootstrap.bundle.min.js"></script>
-  <script src="../js/owl-carousel.js"></script>
-  <script src="../js/animation.js"></script>
-  <script src="../js/imagesloaded.js"></script>
-  <script src="../js/custom.js"></script>
-
 </body>
+  <!-- Scripts -->
+  <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('assets/js/owl-carousel.js')}}"></script>
+  <script src="{{asset('assets/js/animation.js')}}"></script>
+  <script src="{{asset('assets/js/imagesloaded.js')}}"></script>
+  <script src="{{asset('assets/js/custom.js')}}"></script>
 
 </html>
