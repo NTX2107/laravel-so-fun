@@ -27,39 +27,54 @@
 </head>
 
 <body>
+@if(session('error'))
+    <div class="alert alert-success">
+        {{ session('error') }}
+    </div>
+@endif
 <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
     <div class="wrapper wrapper--w680">
         <div class="card card-1">
             <div class="card-heading"></div>
             <div class="card-body">
                 <h2 class="title">Create New Product</h2>
-                @csrf
-                <form method="POST" action="{{route('create.product')}}">
+                <form method="post" action="{{route('create.product')}}">
+                    @csrf
                     <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="Product Name" name="name">
+                        <label>
+                            <input id="name" class="input--style-1" type="text" placeholder="Product Name" name="name"required>
+                        </label>
                     </div>
                     <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="Description" name="description">
+                        <label>
+                            <input id="description" class="input--style-1" type="text" placeholder="Description" name="description" required>
+                        </label>
                     </div>
                     <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="Detail" name="detail">
+                        <label>
+                            <input id="detail" class="input--style-1" type="text" placeholder="Detail" name="detail" required>
+                        </label>
                     </div>
                     <div class="input-group">
-                        <input class="input--style-1" type="number" placeholder="Category ID" name="category_id">
+                        <label>
+                            <input id="categoryId" class="input--style-1" type="number" placeholder="Category ID" name="category_id" required>
+                        </label>
                     </div>
                     <div class="input-group">
-                        <input class="input--style-1" type="number" placeholder="Quantity" name="quantity">
+                        <label>
+                            <input id="price" class="input--style-1" type="number" placeholder="Price" name="price" required>
+                        </label>
                     </div>
                     <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="Images Url" name="detail">
+                        <label>
+                            <input id="images" class="input--style-1" type="text" placeholder="Images Url" name="images" required>
+                        </label>
                     </div>
                     <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="Detail" name="detail">
+                        <label>
+                            <input id="quantity" class="input--style-1" type="text" placeholder="Quantity" name="quantity" required>
+                        </label>
                     </div>
-                    <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="Detail" name="detail">
-                    </div>
-
 {{--                    <div class="row row-space">--}}
 {{--                        <div class="col-2">--}}
 {{--                            <div class="input-group">--}}
@@ -101,6 +116,7 @@
 {{--                    </div>--}}
                     <div class="p-t-20">
                         <button class="btn btn--radius btn--green" type="submit">Submit</button>
+                        <a class="nav-link" type="button" href="{{route('home')}}">Back to Homepage</a>
                     </div>
                 </form>
             </div>

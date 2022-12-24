@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Services\Interfaces\IProductService;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 
 class ProductController extends Controller
 {
@@ -24,8 +25,13 @@ class ProductController extends Controller
     }
 
     public function create(ProductRequest $request) {
-        $this->productService->create($request);
-        return redirect(route('home'));
+//        try {
+            $validated = $request->validated();
+            $this->productService->create($validated);
+            return redirect(route('home'))->with('status', 'Product has been created successfully');
+//        } catch (\Exception) {
+//            return redirect(route('show.create.product'))->with('error', 'Failed to create new product! Try again');
+//        }
     }
 
     public function loadFrom() {

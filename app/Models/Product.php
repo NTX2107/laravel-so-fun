@@ -22,6 +22,7 @@ class Product extends Model
         'images',
         'detail',
         'description',
+        'category_id',
     ];
 
     /**
