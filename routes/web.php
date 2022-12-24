@@ -20,8 +20,8 @@ Route::get('/', function () {
 });
 
 Route::prefix('products')->group(function () {
-    Route::get('', [ProductController::class, 'getListProducts'])->name('show.all.products');
-    Route::get('{id}', [ProductController::class, 'getProductDetail'])->name('show.product');
+    Route::get('', [ProductController::class, 'index'])->name('show.all.products');
+    Route::get('{id}', [ProductController::class, 'detail'])->name('show.product');
 });
 
 Route::prefix('categories')->group(function () {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Services\Interfaces\IProductService;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,24 @@ class ProductController extends Controller
         $this->productService = $productService;
     }
 
-    public function getListProducts() {
+    public function index() {
         return $this->productService->findAll();
     }
 
-    public function getProductDetail($id) {
+    public function detail($id) {
         return $this->productService->findById($id);
+    }
+
+    public function create(ProductRequest $request) {
+        return $this->productService->create($request);
+    }
+
+    public function delete($id) {
+        return $this->productService->softDelete($id);
+    }
+
+    public function edit($id, ProductRequest $request) {
+        $validated = $request->validated();
+        return $this->productService->update($id, $validated);
     }
 }
