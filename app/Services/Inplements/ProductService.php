@@ -4,6 +4,7 @@ namespace App\Services\Inplements;
 
 use App\Repositories\Interfaces\IProductRepository;
 use App\Services\Interfaces\IProductService;
+use Illuminate\Support\Facades\DB;
 
 class ProductService implements IProductService
 {
@@ -35,6 +36,8 @@ class ProductService implements IProductService
 
     public function create($data)
     {
+        $category = DB::table('categories')
+            ->where('id', '=', $data->category_id);
         return $this->productRepository->create($data);
     }
 
