@@ -5,6 +5,7 @@ namespace App\Services\Inplements;
 use App\Repositories\Interfaces\IProductRepository;
 use App\Services\Interfaces\IProductService;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ProductService implements IProductService
 {
@@ -34,10 +35,14 @@ class ProductService implements IProductService
         return $this->productRepository->findTrashedById($trashId);
     }
 
+    /** @throws \Exception */
     public function create($data)
     {
         $category = DB::table('categories')
-            ->where('id', '=', $data->category_id);
+            ->select('code')
+            ->where('id', $data['category_id'])
+            ->first();
+        $data['code'] = $category->code.Str::random(6);
         return $this->productRepository->create($data);
     }
 
