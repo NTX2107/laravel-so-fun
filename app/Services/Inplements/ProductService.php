@@ -38,11 +38,6 @@ class ProductService implements IProductService
     /** @throws \Exception */
     public function create($data)
     {
-        $category = DB::table('categories')
-            ->select('code')
-            ->where('id', $data['category_id'])
-            ->first();
-        $data['code'] = $category->code.Str::random(6);
         return $this->productRepository->create($data);
     }
 
@@ -64,5 +59,10 @@ class ProductService implements IProductService
     public function exists($val, $column)
     {
         return $this->productRepository->exists($val, $column);
+    }
+
+    public function findAllByCategoryId($category)
+    {
+        return $this->productRepository->findAllByCategoryId($category);
     }
 }
