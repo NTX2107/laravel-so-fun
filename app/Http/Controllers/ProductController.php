@@ -25,13 +25,13 @@ class ProductController extends Controller
     }
 
     public function create(ProductRequest $request) {
-//        try {
+        try {
             $validated = $request->validated();
             $this->productService->create($validated);
-            return redirect(route('home'))->with('status', 'Product has been created successfully');
-//        } catch (\Exception) {
-//            return redirect(route('show.create.product'))->with('error', 'Failed to create new product! Try again');
-//        }
+            return redirect(route('home'))->with('success', 'Product has been created successfully');
+        } catch (\Exception) {
+            return redirect(route('show.create.product'))->with('error', 'Failed to create new product! Try again');
+        }
     }
 
     public function loadFrom() {

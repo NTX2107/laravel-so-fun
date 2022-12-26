@@ -8,6 +8,8 @@ interface IProductService
 
     public function findById($id);
 
+    public function findAllByCategoryId($category);
+
     public function findAllTrashed();
 
     public function findTrashedById($trashId);

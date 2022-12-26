@@ -5,6 +5,8 @@ namespace App\Repositories;
 use App\Models\Product;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class AbstractRepository implements BaseRepository
 {
@@ -43,6 +45,11 @@ class AbstractRepository implements BaseRepository
 
     public function create($data)
     {
+        $category = DB::table('categories')
+            ->select('code')
+            ->where('id', $data['category_id'])
+            ->first();
+        $data['code'] = $category->code.Str::random(6);
         $result = $this->model->newQuery()->create($data);
         return $this->model->find($result->id);
     }

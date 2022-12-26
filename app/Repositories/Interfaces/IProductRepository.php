@@ -6,5 +6,5 @@ use App\Repositories\BaseRepository;
 
 interface IProductRepository extends BaseRepository
 {
-
+    public function findAllByCategoryId($categoryId);
 }
