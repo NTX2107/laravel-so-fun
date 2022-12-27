@@ -21,8 +21,9 @@ class HomeController extends Controller
     {
         $categories = $this->categoryService->findAll();
         foreach ($categories as $category) {
-            $category['childProducts'] = $this->productService->findAllByCategoryId($category->id);
+            $category->childProducts = $category->products()->paginate(15);
+//            echo $category, "<br>", "<br>";
         }
-        return view('index')->with('categories', $categories);
+        return view('main.index')->with('categories', $categories);
     }
 }

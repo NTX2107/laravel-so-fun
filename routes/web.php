@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -17,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::prefix('auth')->group(function () {
+    Route::get('login', [AuthController::class, 'index'])->name('show.login');
+    Route::post('login', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
+});
 
 Route::prefix('products')->group(function () {
     Route::get('', [ProductController::class, 'index'])->name('show.all.products');
