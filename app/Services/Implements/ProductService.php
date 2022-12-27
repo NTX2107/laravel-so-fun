@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Inplements;
+namespace App\Services\Implements;
 
 use App\Repositories\Interfaces\IProductRepository;
 use App\Services\Interfaces\IProductService;

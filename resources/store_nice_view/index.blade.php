@@ -148,7 +148,7 @@
                                                                 <div class="listing-item">
                                                                     <div class="left-image">
                                                                         <a href="#"><img
-                                                                            src="assets/images/listing-01.jpg"
+                                                                            src="{{asset('assets/images/listing-01.jpg')}}"
                                                                             alt=""></a>
                                                                         <div class="hover-content">
                                                                             <div class="main-white-button">
@@ -163,14 +163,14 @@
                                                                             Apartment</h4></a>
                                                                         <h6>by: Real ESTATE Agent</h6>
                                                                         <span class="price"><div class="icon"><img
-                                                                            src="assets/images/listing-icon-01.png"
+                                                                            src="{{asset('assets/images/listing-icon-01.png')}}"
                                                                             alt=""></div> $600 / month included tax</span>
                                                                         <span
                                                                             class="details">Details: <em>860 sq ft</em></span>
                                                                         <span class="info"><img
-                                                                            src="assets/images/listing-icon-02.png"
+                                                                            src="{{asset('assets/images/listing-icon-02.png')}}"
                                                                             alt=""> 2 Bedrooms<br><img
-                                                                            src="assets/images/listing-icon-03.png"
+                                                                            src="{{asset('assets/images/listing-icon-03.png')}}"
                                                                             alt=""> 3 Bathrooms</span>
                                                                     </div>
                                                                 </div>
@@ -335,7 +335,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <!-- third page of first category -->
                                                     <div class="item">
                                                         <div class="row">
@@ -437,7 +436,6 @@
                                             </div>
                                         </div>
                                     </li>
-
                                     <!-- second category listing of items -->
                                     <li>
                                         <div>
@@ -639,7 +637,6 @@
                                             </div>
                                         </div>
                                     </li>
-
                                     <!-- third category first page -->
                                     <li>
                                         <div>
@@ -846,7 +843,6 @@
                                             </div>
                                         </div>
                                     </li>
-
                                     <!-- 4th category 1st page -->
                                     <li>
                                         <div>
@@ -1086,8 +1082,6 @@
                                             </div>
                                         </div>
                                     </li>
-
-
                                 </ul>
 
                             </div>
