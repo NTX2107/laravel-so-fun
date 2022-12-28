@@ -17,7 +17,7 @@ class AuthController extends Controller
         $this->userService = $userService;
     }
 
-    public function index()
+    public function showLogin()
     {
         return view('auth.login');
     }
@@ -27,24 +27,39 @@ class AuthController extends Controller
         $validated = $request->validated();
         $email = $validated['email'];
         $password = $validated['password'];
-        $checked = Auth::attempt(['email' => $email, 'password' => $password], true);
-        if ($checked) {
-            toast('Đăng nhập thành công', TypeAlert::SUCCESS)->autoClose(5000);
-            return redirect()->route('home');
-        } else {
-            toast('Đăng nhập thất bại', TypeAlert::ERROR)->autoClose(5000);
+        $user = $this->userService->login($email, $password);
+        if (isset($user->email)){
+            $checked = Auth::attempt(['email' => $user->email, 'password' => $password]);
+            if ($checked){
+                toast($user['message'],TypeAlert::SUCCESS)->autoClose(5000);
+                return redirect()->route('home');
+            }else{
+                toast($user['message'],TypeAlert::WARNING)->autoClose(5000);
+                return back();
+            }
+        }else{
+            toast($user,TypeAlert::ERROR)->autoClose(5000);
             return back();
         }
     }
 
-    public function register(RegisterRequest $request)
+    public function showRegister()
     {
-
+        return view('auth.register');
     }
 
-    public function admin()
+    public function register(RegisterRequest $request)
     {
-        return view();
+        $validated = $request->validated();
+        $result = $this->userService->register($validated);
+        if ($result->message == 'Create new account successfully') {
+            toast($result['message'], TypeAlert::SUCCESS)->autoClose(5000);
+            return redirect()->route('show.login');
+        }
+        else {
+            toast($result['message'], TypeAlert::WARNING)->autoClose(5000);
+            return back();
+        }
     }
 
     public function logout()

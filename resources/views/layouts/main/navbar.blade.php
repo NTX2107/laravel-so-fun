@@ -12,23 +12,25 @@
                         <li><a href="{{route('home')}}"
                                class="{{ Route::currentRouteNamed('home') ? 'active' : '' }}">Home</a></li>
                         <li><a href="#">Category</a></li>
-                        <li><a href="{{route('show.all.products')}}"
+                        <li><a href="#"
                                class="{{ Route::currentRouteNamed('show.all.products') ? 'active' : '' }}">Listing</a>
                         </li>
                         <li><a href="#">Contact Us</a></li>
+                        @auth('web')
+                            @if(auth()->user()->role == \App\Enums\Role::ADMIN)
+                                <li><a href="{{route('show.all.products')}}">ADMIN PAGE</a></li>
+                            @endif
+                        @endauth
                         <li style="display: flex">
                             @guest('web')
                                 <div style="padding-left: 20px" class="main-white-button"><a
-                                        href="#"><i
+                                        href="{{route('show.register')}}"><i
                                             class="fa fa-plus"></i>Register</a></div>
                                 <div style="padding-left: 20px" class="main-white-button"><a
                                         href="{{route('show.login')}}"><i
                                             class="fa fa-plus"></i>Login</a></div>
                             @endguest
                             @auth('web')
-                                <div style="padding-left: 20px" class="main-white-button"><a
-                                        href="{{route('auth.logout')}}"><i
-                                            class="fa fa-plus"></i>Logout</a></div>
                                 <div style="padding-left: 20px" class="main-white-button"><a
                                         href="{{route('auth.logout')}}"><i
                                             class="fa fa-plus"></i>Logout</a></div>

@@ -10,7 +10,7 @@ class UserRepository extends AbstractRepository implements IUserRepository
 {
     protected $model_class = User::class;
 
-    function login($email)
+    function findByEmail($email)
     {
         return $this->model->newQuery()->where('email', '=', $email)->first();
     }

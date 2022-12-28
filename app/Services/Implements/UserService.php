@@ -2,6 +2,7 @@
 
 namespace App\Services\Implements;
 
+use App\Enums\Role;
 use App\Repositories\Interfaces\IUserRepository;
 use App\Services\Interfaces\IUserService;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +18,7 @@ class UserService implements IUserService
 
     public function login($email, $password)
     {
-        $user = $this->userRepository->login($email);
+        $user = $this->userRepository->findByEmail($email);
         if ($user == null) {
             $user['message'] = 'Account not found';
             return $user;
@@ -29,5 +30,23 @@ class UserService implements IUserService
             $user['message'] = 'Login successfully';
         }
         return $user;
+    }
+
+    public function register($data)
+    {
+        $user = $this->userRepository->findByEmail($data['email']);
+        if ($user != null) {
+            $user['message'] = 'Account already exists';
+            return $user;
+        }
+        $data['password'] = Hash::make($data['password']);
+        $data['role'] = Role::USER;
+        $result = $this->userRepository->create($data);
+        if ($result == null) {
+            $result['message'] = 'Create new account failed';
+        } else {
+            $result['message'] = 'Create new account successfully';
+        }
+        return $result;
     }
 }
