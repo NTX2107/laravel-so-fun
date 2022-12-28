@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <title>Register</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -23,9 +23,12 @@
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4">
                 <div class="login-wrap p-0">
-                    <h3 class="mb-4 text-center">Have an account?</h3>
-                    <form action="{{route('auth.login')}}" method="post" class="signin-form">
+                    <h3 class="mb-4 text-center">Register</h3>
+                    <form action="{{route('auth.register')}}" method="post" class="signin-form">
                         @csrf
+                        <div class="form-group">
+                            <input id="name" name="name" type="text" class="form-control" placeholder="Your name" required>
+                        </div>
                         <div class="form-group">
                             <input id="email" name="email" type="text" class="form-control" placeholder="Email" required>
                         </div>
@@ -34,23 +37,19 @@
                             <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+                            <button type="submit" class="form-control btn btn-primary submit px-3">Sign Up</button>
                         </div>
                         <div class="form-group d-md-flex">
                             <div class="w-50">
-                                <label class="checkbox-wrap checkbox-primary">Remember Me
+                                <label class="checkbox-wrap checkbox-primary">I agree to User's ....
                                     <input type="checkbox" checked>
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                            <div class="w-50 text-md-right">
-                                <a href="#" style="color: #fff">Forgot Password</a>
-                            </div>
                         </div>
                     </form>
-{{--                    <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>--}}
                     <div class="social d-flex text-center">
-                        <a href="{{route('show.register')}}" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Register</a>
+                        <a href="{{route('show.login')}}" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Login</a>
                         <a href="{{route('home')}}" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Back to Homepage</a>
                     </div>
                 </div>
@@ -68,5 +67,6 @@
 
 </body>
 </html>
+
 
 

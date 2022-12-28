@@ -6,5 +6,5 @@ use App\Repositories\BaseRepository;
 
 interface IUserRepository extends BaseRepository
 {
-    function login($email);
+    function findByEmail($email);
 }
