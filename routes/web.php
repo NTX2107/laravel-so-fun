@@ -25,7 +25,7 @@ Route::prefix('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
-Route::prefix('products')->group(function () {
+Route::prefix('products')->middleware('auth:web')->group(function () {
     Route::get('', [ProductController::class, 'index'])->name('show.all.products');
     Route::get('detail/{id}', [ProductController::class, 'detail'])->name('show.product');
     Route::get('create', [ProductController::class, 'loadFrom'])->name('show.create.product');
