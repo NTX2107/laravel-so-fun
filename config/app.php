@@ -186,6 +186,7 @@ return [
          * Package Service Providers...
          */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -212,6 +213,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'JWTAuth' => PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => PHPOpenSourceSaver\JWTAuth\Facades\JWTFactory::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

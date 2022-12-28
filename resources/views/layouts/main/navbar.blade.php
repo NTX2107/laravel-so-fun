@@ -12,19 +12,23 @@
                         <li><a href="{{route('home')}}"
                                class="{{ Route::currentRouteNamed('home') ? 'active' : '' }}">Home</a></li>
                         <li><a href="#">Category</a></li>
-                        <li><a href="{{ route('show.all.products') }}"
+                        <li><a href="{{route('show.all.products')}}"
                                class="{{ Route::currentRouteNamed('show.all.products') ? 'active' : '' }}">Listing</a>
                         </li>
                         <li><a href="#">Contact Us</a></li>
                         <li style="display: flex">
-                            @if(!\Illuminate\Support\Facades\Auth::check())
+                            @guest('web')
                                 <div style="padding-left: 20px" class="main-white-button"><a
                                         href="#"><i
                                             class="fa fa-plus"></i>Register</a></div>
                                 <div style="padding-left: 20px" class="main-white-button"><a
                                         href="{{route('show.login')}}"><i
                                             class="fa fa-plus"></i>Login</a></div>
-                            @else
+                            @endguest
+                            @auth('web')
+                                <div style="padding-left: 20px" class="main-white-button"><a
+                                        href="{{route('auth.logout')}}"><i
+                                            class="fa fa-plus"></i>Logout</a></div>
                                 <div style="padding-left: 20px" class="main-white-button"><a
                                         href="{{route('auth.logout')}}"><i
                                             class="fa fa-plus"></i>Logout</a></div>

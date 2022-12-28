@@ -24,7 +24,7 @@
             <div class="col-md-6 col-lg-4">
                 <div class="login-wrap p-0">
                     <h3 class="mb-4 text-center">Have an account?</h3>
-                    <form action="{{route('auth.login')}}" class="signin-form">
+                    <form action="{{route('auth.login')}}" method="post" class="signin-form">
                         @csrf
                         <div class="form-group">
                             <input id="email" name="email" type="text" class="form-control" placeholder="Email" required>
