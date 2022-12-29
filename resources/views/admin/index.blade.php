@@ -10,7 +10,8 @@
     <title>My Admin</title>
 </head>
 <body style="display: flex">
-<div style="width: 15%">
+<!-- Control Panel -->
+<div style="width: 15%; padding-right: 10px">
     <div style="padding-bottom: 30px">ADMIN CONTROL PANEL</div>
     <div style="padding-bottom: 30px">
         <a href="{{route('show.create.product')}}" type="button" class="btn btn-primary">
@@ -18,10 +19,52 @@
             <span>Create new product</span>
         </a>
     </div>
-    <div>
-        <a href="{{route('home')}}"> Back to Homepage</a>
+    <div style="padding-bottom: 30px">
+        <a href="{{route('home'    )}}"> Back to Homepage</a>
+    </div>
+    <div style="padding-bottom: 30px">PRODUCT FILTER
+        <form method="post" action="{{route('filter.products')}}">
+            @csrf
+            <div class="form-group">
+                <label for="id"></label>
+                <input id="id" name="id" type="text" class="form-control" placeholder="Product ID">
+            </div>
+            <div class="form-group">
+                <label for="name"></label>
+                <input id="name" name="name" type="text" class="form-control" placeholder="Product name">
+            </div>
+            <div class="form-group">
+                <label for="quantity"></label>
+                <input id="quantity" name="quantity" type="number" class="form-control" placeholder="Product quantity">
+            </div>
+            <div class="form-group">
+                <label for="code"></label>
+                <input id="code" name="code" type="text" class="form-control" placeholder="Product code">
+            </div>
+            <div class="form-group">
+                <label for="price"></label>
+                <input id="price" name="price" type="text" class="form-control" placeholder="Product price">
+            </div>
+            <div class="form-group">
+                <div class="rs-select2 js-select-simple select--no-search">
+                    <label>
+                        <select name="category_id" id="category_id">
+                            <option disabled="disabled" selected="selected">Category</option>
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                    </label>
+                    <div class="select-dropdown"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="form-control btn btn-primary submit px-3">Search</button>
+            </div>
+        </form>
     </div>
 </div>
+<!-- Table -->
 <div style="width: 80%">
     <table class="table">
         <thead class="table-info">
@@ -49,7 +92,7 @@
                 <td>{{$product->detail}}</td>
                 <td>{{$product->description}}</td>
                 <td>{{$product->quantity}}</td>
-                <td>{{$product->category_id}}</td>
+                <td>{{$product->category->name}}</td>
                 <td>
                     <a href="{{route('show.edit.product', ['id' => $product->id])}}">
                         <i class="fa-solid fa-pen-to-square"></i>

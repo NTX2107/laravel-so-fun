@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Enums\TypeAlert;
+use App\Filters\ProductFilter;
 use App\Http\Requests\ProductRequest;
+use App\Models\Product;
 use App\Services\Interfaces\ICategoryService;
 use App\Services\Interfaces\IProductService;
+use Illuminate\Http\Client\Request;
 
 class ProductController extends Controller
 {
@@ -18,10 +21,14 @@ class ProductController extends Controller
         $this->categoryService = $categoryService;
     }
 
-    public function index()
+    public function index(ProductFilter $filter)
     {
-        $products = $this->productService->findAll();
-        return view('admin.index')->with('products', $products);
+        $categories = $this->categoryService->findAll();
+        $products = Product::filter($filter)->get();
+//        $products = $this->productService->findAll();
+        return view('admin.index')
+            ->with('categories', $categories)
+            ->with('products', $products);
     }
 
     public function detail($id)
