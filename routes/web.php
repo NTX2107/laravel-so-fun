@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\web\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,23 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function () {
+    require_once __DIR__ . '/admin.php';
+});
+
 Route::prefix('auth')->group(function () {
     Route::get('login', [AuthController::class, 'showLogin'])->name('show.login');
     Route::post('login', [AuthController::class, 'login'])->name('auth.login');
     Route::get('register', [AuthController::class, 'showRegister'])->name('show.register');
     Route::post('register', [AuthController::class, 'register'])->name('auth.register');
     Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
-});
-
-Route::group(['prefix' => 'admin/products','middleware' => 'auth:web'], function () {
-    Route::get('', [ProductController::class, 'index'])->name('show.all.products');
-    Route::post('', [ProductController::class, 'index'])->name('filter.products');
-    Route::get('detail/{id}', [ProductController::class, 'detail'])->name('show.product');
-    Route::get('create', [ProductController::class, 'loadFromCreate'])->name('show.create.product');
-    Route::post('create', [ProductController::class, 'create'])->name('create.product');
-    Route::get('edit/{id}', [ProductController::class, 'loadFormEdit'])->name('show.edit.product');
-    Route::put('edit/{id}', [ProductController::class, 'edit'])->name('edit.product');
-    Route::delete('delete/{id}', [ProductController::class, 'delete'])->name('delete.product');
 });
 
 Route::prefix('categories')->group(function () {
