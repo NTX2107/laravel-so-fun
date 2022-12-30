@@ -28,7 +28,7 @@ class ProductRequest extends FormRequest
             'category_id' => 'required|numeric',
             'quantity' => 'required|numeric',
             'price' => 'required|numeric',
-            'images' => 'required|url',
+            'images' => 'required',
             'detail' => 'required',
             'description' => 'required',
         ];

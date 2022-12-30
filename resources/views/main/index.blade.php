@@ -56,9 +56,9 @@
                                                                                             alt=""></a>
                                                                                     <div class="hover-content">
                                                                                         <div class="main-white-button">
-                                                                                            <a href="{{route('show.product', $product->id)}}"><i
-                                                                                                    class="fa fa-eye"></i>
-                                                                                                See Detail</a>
+{{--                                                                                            <a href="{{route('show.product', $product->id)}}"><i--}}
+{{--                                                                                                    class="fa fa-eye"></i>--}}
+{{--                                                                                                See Detail</a>--}}
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>

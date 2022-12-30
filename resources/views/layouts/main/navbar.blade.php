@@ -13,12 +13,12 @@
                                class="{{ Route::currentRouteNamed('home') ? 'active' : '' }}">Home</a></li>
                         <li><a href="#">Category</a></li>
                         <li><a href="#"
-                               class="{{ Route::currentRouteNamed('show.all.products') ? 'active' : '' }}">Listing</a>
+                               class="{{ Route::currentRouteNamed('admin.show.products') ? 'active' : '' }}">Listing</a>
                         </li>
                         <li><a href="#">Contact Us</a></li>
                         @auth('web')
                             @if(auth()->user()->role == \App\Enums\Role::ADMIN)
-                                <li><a href="{{route('show.all.products')}}">ADMIN PAGE</a></li>
+                                <li><a href="{{route('admin.show.dashboard')}}">ADMIN PAGE</a></li>
                             @endif
                         @endauth
                         <li style="display: flex">
