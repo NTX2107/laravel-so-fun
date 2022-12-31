@@ -12,23 +12,28 @@
                             <div class="col-md-4">
                                 <div class="form-group d-flex align-items-center">
                                     <label class="horizontal-label" for="id">ID</label>
-                                    <input id="id" name="id" type="text" class="form-control" placeholder="Product ID">
+                                    <input id="id" name="id" type="text" class="form-control" placeholder="Product ID"
+                                           @if(isset($_REQUEST['id'])) value="{{$_REQUEST['id']}}"@endif>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group d-flex align-items-center">
                                     <label class="horizontal-label" for="name">Name</label>
                                     <input id="name" name="name" type="text" class="form-control"
-                                           placeholder="Product name">
+                                           placeholder="Product name"
+                                           @if(isset($_REQUEST['name'])) value="{{$_REQUEST['name']}}"@endif>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group d-flex align-items-center">
                                     <label class="horizontal-label" for="category_id">Category</label>
                                     <select name="category_id" id="category_id" class="form-select">
-                                        <option disabled="disabled" selected>Category</option>
+                                        <option disabled="disabled" @if(!isset($_REQUEST['category_id'])) selected @endif>Category</option>
                                         @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                            <option value="{{$category->id}}"
+                                            @if(isset($_REQUEST['category_id']) && $_REQUEST['category_id'] == $category->id) selected @endif>
+                                                {{$category->name}}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -39,21 +44,24 @@
                                 <div class="form-group d-flex align-items-center">
                                     <label class="horizontal-label" for="quantity">Quantity</label>
                                     <input id="quantity" name="quantity" type="number" class="form-control"
-                                           placeholder="Product quantity">
+                                           placeholder="Product quantity"
+                                           @if(isset($_REQUEST['quantity'])) value="{{$_REQUEST['quantity']}}"@endif>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group d-flex align-items-center">
                                     <label class="horizontal-label" for="code">Code</label>
                                     <input id="code" name="code" type="text" class="form-control"
-                                           placeholder="Product code">
+                                           placeholder="Product code"
+                                           @if(isset($_REQUEST['code'])) value="{{$_REQUEST['code']}}"@endif>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group d-flex align-items-center">
                                     <label class="horizontal-label" for="price">Price</label>
                                     <input id="price" name="price" type="text" class="form-control"
-                                           placeholder="Product price">
+                                           placeholder="Product price"
+                                           @if(isset($_REQUEST['price'])) value="{{$_REQUEST['price']}}"@endif>
                                 </div>
                             </div>
                         </div>
@@ -118,17 +126,18 @@
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                                 <li class="page-item @if($products->onFirstPage()) disabled @endif">
-                                    <a class="page-link" href="{{$products->previousPageUrl()}}" aria-label="Previous">
+                                    <a class="page-link" href="{{route('admin.filter.products', $_REQUEST+=['page' => $products->currentPage()-1])}}" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
                                 @for($i = 1; $i <= $products->lastPage(); $i++)
                                     <li class="page-item @if($i == $products->currentPage()) active @endif">
-                                        <a class="page-link" href="{{route('admin.filter.products', ['page' => $i])}}">{{$i}}</a>
+                                        <a class="page-link"
+                                           href="{{route('admin.filter.products', $_REQUEST+=['page' => $i])}}">{{$i}}</a>
                                     </li>
                                 @endfor
                                 <li class="page-item @if($products->currentPage() == $products->lastPage()) disabled @endif">
-                                    <a class="page-link" href="{{$products->nextPageUrl()}}" aria-label="Next">
+                                    <a class="page-link" href="{{route('admin.filter.products', $_REQUEST+=['page' => $products->currentPage()+1])}}" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </li>

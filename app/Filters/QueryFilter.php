@@ -5,6 +5,8 @@ namespace App\Filters;
 //use App\Helpers\Common\StringHelper;
 use App\Http\Requests\ProductFilterRequest;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class QueryFilter
@@ -32,9 +34,9 @@ class QueryFilter
 
     /**
      * QueryFilter constructor.
-     * @param ProductFilterRequest $request
+     * @param Request $request
      */
-    public function __construct(ProductFilterRequest $request)
+    public function __construct(Request $request)
     {
         $this->request = $request;
         $this->filters = $this->request->all();

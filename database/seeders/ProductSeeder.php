@@ -59,5 +59,17 @@ class ProductSeeder extends Seeder
                 Product::updateOrCreate($product);
             }
         }
+        //tao 20 san pham category=houseware
+        for ($i = 0; $i < 20; $i++) {
+            $product['name'] = fake()->name;
+            $product['quantity'] = 69;
+            $product['code'] = $categories[0]['code'].fake()->postcode();
+            $product['price'] = fake()->randomNumber(6);
+            $product['images'] = fake()->imageUrl();
+            $product['detail'] = fake()->sentence();
+            $product['description'] = fake()->sentence();
+            $product['category_id'] = $categories[0]['id'];
+            Product::updateOrCreate($product);
+        }
     }
 }
