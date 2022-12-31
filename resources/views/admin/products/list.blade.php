@@ -113,6 +113,29 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div class="row mb-4">
+                    <div class="d-flex justify-content-end">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item @if($products->onFirstPage()) disabled @endif">
+                                    <a class="page-link" href="{{$products->previousPageUrl()}}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                @for($i = 1; $i <= $products->lastPage(); $i++)
+                                    <li class="page-item @if($i == $products->currentPage()) active @endif">
+                                        <a class="page-link" href="{{route('admin.filter.products', ['page' => $i])}}">{{$i}}</a>
+                                    </li>
+                                @endfor
+                                <li class="page-item @if($products->currentPage() == $products->lastPage()) disabled @endif">
+                                    <a class="page-link" href="{{$products->nextPageUrl()}}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

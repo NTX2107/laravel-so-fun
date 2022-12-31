@@ -24,7 +24,7 @@ class ProductController extends Controller
     public function index(ProductFilter $filter)
     {
         $categories = $this->categoryService->findAll();
-        $products = Product::filter($filter)->get();
+        $products = Product::filter($filter)->paginate(10);
         return view('admin.products.list')->with([
             'categories' => $categories,
             'products' => $products,
