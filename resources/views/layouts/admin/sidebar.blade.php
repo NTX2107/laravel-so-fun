@@ -220,6 +220,12 @@
                 <span>Blank</span>
             </a>
         </li><!-- End Blank Page Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('home')}}">
+                <i class="bi bi-file-earmark"></i>
+                <span>Back to Shopping Web</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
 
     </ul>
 

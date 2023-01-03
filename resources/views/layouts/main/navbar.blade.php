@@ -21,7 +21,7 @@
                                 <li><a href="{{route('admin.show.dashboard')}}">ADMIN PAGE</a></li>
                             @endif
                         @endauth
-                        <li style="display: flex">
+                        <li class="list-button">
                             @guest('web')
                                 <div style="padding-left: 20px" class="main-white-button"><a
                                         href="{{route('show.register')}}"><i
