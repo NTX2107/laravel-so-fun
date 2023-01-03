@@ -5,7 +5,6 @@ namespace App\Filters;
 //use App\Helpers\Common\StringHelper;
 use App\Http\Requests\ProductFilterRequest;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -75,5 +74,10 @@ class QueryFilter
             }
         }
         return $this->builder;
+    }
+
+    public function getAllFilterParams()
+    {
+        return $this->request->all();
     }
 }
