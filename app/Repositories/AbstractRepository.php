@@ -125,6 +125,5 @@ class AbstractRepository implements BaseRepository
         } else {
             return $query_builder->get();
         }
-
     }
 }

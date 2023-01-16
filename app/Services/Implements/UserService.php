@@ -49,4 +49,15 @@ class UserService implements IUserService
         }
         return $result;
     }
+
+    public function find($filters)
+    {
+        $users = [];
+        $arr_user = $this->userRepository->find($filters);
+        foreach ($arr_user as $user) {
+            $user['phone'] = convertPhoneToUsFormat($user['phone']);
+            array_push($users, $user);
+        }
+        return $users;
+    }
 }

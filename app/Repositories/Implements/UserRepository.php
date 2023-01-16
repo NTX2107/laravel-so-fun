@@ -14,4 +14,8 @@ class UserRepository extends AbstractRepository implements IUserRepository
     {
         return $this->model->newQuery()->where('email', '=', $email)->first();
     }
+
+    function find($filters) {
+        return parent::findBase($filters);
+    }
 }
