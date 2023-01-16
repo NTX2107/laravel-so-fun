@@ -9,6 +9,7 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Services\Interfaces\ICategoryService;
 use App\Services\Interfaces\IProductService;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -43,6 +44,29 @@ class ProductController extends Controller
     {
         $categories = $this->categoryService->findAll();
         return view('admin.products.create')->with('categories', $categories);
+    }
+
+    public function upload(Request $request) {
+        if($request->hasFile('detail')) {
+            //get filename with extension
+//            $file = $request->file('detail');
+//            //get filename without extension
+//            $filename = pathinfo($file, PATHINFO_FILENAME); //fix
+//            //get file extension
+//            $extension = $request->file('detail')->getClientOriginalExtension();
+//            //filename to store
+//            $filenametostore = $filename.'_'.time().'.'.$extension;
+//            //Upload File
+//            $request->file('detail')->storeAs(asset('assets/images/products'), $filenametostore);//fix
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+//            $savedUrl = uploadImage($file, 'products');
+            $savedUrl = '/public/uploads';
+            $msg = 'Image successfully uploaded';
+//            $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$savedUrl', '$msg')</script>";
+            // Render HTML output
+            @header('Content-type: text/html; charset=utf-8');
+//            echo $re;
+        }
     }
 
     public function create(ProductRequest $request)

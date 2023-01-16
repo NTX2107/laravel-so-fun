@@ -18,6 +18,7 @@ Route::group(['prefix' => 'products'], function () {
     Route::post('all', [ProductController::class, 'index'])->name('admin.filter.products');
     Route::get('detail/{id}', [ProductController::class, 'detail'])->name('admin.show.product');
     Route::get('create', [ProductController::class, 'loadFormCreate'])->name('admin.show.create.product');
+    Route::post('ckeditor/image_upload', [ProductController::class, 'upload'])->name('admin.upload.product.thumbnail');
     Route::post('create', [ProductController::class, 'create'])->name('admin.create.product');
     Route::get('edit/{id}', [ProductController::class, 'loadFormEdit'])->name('admin.show.edit.product');
     Route::put('edit/{id}', [ProductController::class, 'edit'])->name('admin.edit.product');

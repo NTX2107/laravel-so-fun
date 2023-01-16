@@ -70,4 +70,12 @@ class AuthController extends Controller
         toast('Đã đăng xuất', TypeAlert::WARNING)->autoClose(5000);
         return redirect()->route('show.login');
     }
+
+    public function index(Request $request)
+    {
+        $filters = $request->only(['limit', 'sort_field', 'sort_order', 'search', 'missing_days']);
+        $filters['limit'] = $request->input('limit', 25);
+        $users = $this->userService->find($filters);
+        return view()->with(['users' => $users]);
+    }
 }
